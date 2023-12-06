@@ -6,16 +6,13 @@ use crate::apis::domains::status::status_routes;
 
 /// run_server is a function that starts the server
 pub async fn run_server() {
-    // Set up the tracing
     // let subscriber = Registry::default()
     //     .with(fmt::layer())
     //     .with(TraceLayer::new_for_http());
 
-    // Set the subscriber as the global default
     // tracing::subscriber::set_global_default(subscriber)
     //     .expect("Unable to set global default subscriber");
 
-    // Create your application with the necessary routes
     let app = Router::new()
         .nest("/status", status_routes())
         .layer(TraceLayer::new_for_http());
